@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debit_page</title>
+    <style>
+        .debhead{
+            text-align: center;
+            color:rgba(41, 52, 192, 0.589);;
+            font-size: 50px;
+            margin-top: 150px;
+        }
+        .debdata{
+            padding-top: 100px;
+            padding-left: 30px;
+            background-color: rgba(41, 52, 192, 0.589);
+            width: 300px;
+            height: 150px;
+            margin-left: 41%;
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+        .debdata button{
+            border-radius: 20px;
+            border: 1px solid white;
+        }
+        #deb{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="deb">
+        <div class="debhead">
+            Debit Amount
+        </div>
+        <div class="debdata">
+          <input type="number" id="debin">
+          <button type="button" onclick="debamnt()">DebitAmount</button><br><br>
+          <button type="button" onclick="acc()">CheckBalance</button>
+          <button type="button" onclick="cred()">CreditAmount</button>
+        </div>
+    </div>
+    <script>
+         
+         function debamnt() {
+            let pin1=+prompt("enter pin");
+            if(pin1==1212){
+            let amount = parseFloat(document.getElementById("debin").value);
+            let balance = parseFloat(localStorage.getItem("balance")) || 300000;
+
+            if (balance >= amount) {
+                balance -= amount;
+                localStorage.setItem("balance", balance);
+                alert("Amount debited successfully. New balance: ₹" + balance);
+            } else {
+                alert("Insufficient balance");
+            }
+        }
+        else{
+            alert("enter valid pin")
+        }
+        }
+           function sub(){
+            location.href="submit.html";
+           }
+           function acc(){
+            location.href="acc.html";
+           }
+           function cred(){
+            location.href="cred.html";
+           }
+        let pin=+prompt("enter pin");
+        if(pin==1212){
+            document.getElementById("deb").style.display="block";
+        }
+        else{
+            alert("enter valid pin");
+            document.getElementById("deb").style.display="none";
+        }
+    </script>
+</body>
+</html>

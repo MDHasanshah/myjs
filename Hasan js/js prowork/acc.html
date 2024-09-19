@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account page</title>
+    <style>
+        
+        .acdetails{
+            text-align: center;
+            margin-top: 50px;
+            text-align: justify;
+            margin-left: 35%;  
+        }
+        .accdata{
+            padding-top: 30px;
+            padding-left: 10px;
+            background-color: rgba(0, 16, 240, 0.589);
+            height: 400px;
+            color: white;
+            width: 55%;
+            border-radius: 20px; 
+            /* margin-top: 80px;  */
+        }
+        .accdata h2{
+            margin-left: 60px;
+            
+        }
+       
+        .accbuttons{
+            margin-left: 100px;
+           
+        }
+        .accbuttons button{
+            border-radius: 40px;
+            color: black;
+            border: 1px solid white;
+        }
+        #accdetails{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="accdetails">
+    <div class="achead"> <h1 style="color: rgba(41, 52, 192, 0.589); font-size: 50px;margin-left: 40%; margin-top: 60px;"> Account Details</h1></div>
+    <div  class="acdetails">
+        <div class="accdata">
+      <h2>AccountHolderName: Chambu Lingam</h2>
+      <h2>Bank Name: SBI</h2>
+      <h2>PhoneNo: 6371017683 </h2>
+      <h2> IFSC Code: SBIN0032694</h2>
+      <h2 id="balance">Account Balance: ₹<span id="balance-amount"></span></h2>
+      <div class="accbuttons">
+        <button type="button" onclick="home()">Home</button> &nbsp; &nbsp;
+        <button type="button" onclick="cred()">creditamount</button> &nbsp;&nbsp;
+        <button type="button" onclick="deb()">debitamount</button>
+    </div>
+      </div>
+    </div>
+    </div>
+    <script>
+        while(true){
+        let pin=prompt("enter pin");
+        if(pin===null || pin==="")
+        {
+            alert("enter pin, pin can't be empty");
+            document.getElementById("accdetails").style.display="none"; 
+        }
+        else if(pin!=="1212"){
+            alert("enter valid pin");
+            document.getElementById("accdetails").style.display="none";
+            
+        
+        }
+        else{
+            document.getElementById("accdetails").style.display="block";
+            document.getElementById("balance-amount").textContent = localStorage.getItem("balance") || 300000;
+         break;
+        
+        }
+    }
+        function home(){
+            location.href="index.html";
+        }
+        function cred(){
+            location.href="cred.html";
+        }
+        function deb(){
+            location.href="debit.html";
+        }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit</title>
+    <style>
+        #cedid{
+            display: none;
+        }
+        .creddata{
+           
+            text-align: center;
+            margin-top: 50px;
+        }
+        .head{
+            text-align: center;
+            color:rgba(41, 52, 192, 0.589);;
+            font-size: 70px;
+            margin-top: 150px;
+        }
+        .cdata{
+            padding-top: 100px;
+            background-color: rgba(41, 52, 192, 0.589);
+            width: 500px;
+            height: 150px;
+            margin-left: 41%;
+            border-radius: 20px;
+        }
+        .cdata button{
+            border-radius: 15px;
+            color: black;
+            border: 1px solid white;
+        }
+        /* body{
+        background-image: linear-gradient(to bottom, rgba(0,255,0,0), rgba(0,255,0,0.7));
+        
+        height: 510px;
+     } */ 
+
+    </style>
+</head>
+<body>
+    <div id="cedid">
+        <div class="head">
+            Credit Amount
+        </div>
+        <div class="creddata">
+            <div class="cdata">
+    <input type="number" id="amnt">
+    <button type="button" onclick="sub()" >CreditAmount</button><br><br>
+    <button type="button" onclick="acc()"> CheckBalance</button>
+    <button type="button" onclick="deb()"> DebitAmount</button>
+</div>
+</div>
+</div>
+    <script>
+         while(true){
+        let pin=prompt("enter pin");
+        if(pin===null || pin==="")
+        {
+            alert("enter pin, pin can't be empty");
+            document.getElementById("cedid").style.display="none"; 
+        }
+        else if(pin!=="1212"){
+            alert("enter valid pin");
+            document.getElementById("cedid").style.display="none";
+            
+        
+        }
+        else{
+            document.getElementById("cedid").style.display="block";
+            // document.getElementById("balance-amount").textContent = localStorage.getItem("balance") || 300000;
+         break;
+        
+        }
+    }
+       function sub() {
+            let amount = parseFloat(document.getElementById("amnt").value);
+            let balance = parseFloat(localStorage.getItem("balance")) || 300000;
+
+            balance += amount;
+            localStorage.setItem("balance", balance);
+            let pin1=+prompt("enter pin");
+            if(pin1==1212){
+                balance += amount;
+                localStorage.setItem("balance", balance);
+                alert("Amount credited successfully. New balance: ₹" + balance);
+            }
+            else{
+                alert("enter valid pin");
+            }
+            
+        }
+       function acc(){
+        location.href="acc.html";
+       }
+       function deb(){
+        location.href="debit.html";
+       }
+    //    let pin=+prompt("enter pin");
+    //     if(pin==8899){
+    //         document.getElementById("cedid").style.display="block";
+    //     }
+    //     else{
+    //         alert("enter valid pin");
+    //         document.getElementById("cedid").style.display="none";
+    //     }
+    </script>
+</body>
+</html>
